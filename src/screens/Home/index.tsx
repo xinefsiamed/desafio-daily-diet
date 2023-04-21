@@ -1,11 +1,13 @@
 import { HomeHeader } from "@components/HomeHeader";
 import { Container } from "./styles";
 
+import { useNavigation } from '@react-navigation/native'
+
 import { DietStatus } from "@components/DietStatus";
 import { Button } from "@components/Button";
 import { Label } from "@components/Button/styles";
 import { DietCard } from "@components/DietCard";
-import { SectionList, View } from "react-native";
+import { SectionList } from "react-native";
 import { DateSectionTitle } from "@components/DietCard/styles";
 
 
@@ -56,10 +58,17 @@ const Data = [
 
 export function Home() {
 
+
+  const navigation = useNavigation()
+
+  function handleResumeDetails() {
+    navigation.navigate('resume')
+  }
+
   return (
     <Container>
       <HomeHeader />
-      <DietStatus percentage={98.89} />
+      <DietStatus percentage={12.2} onPress={handleResumeDetails} />
 
       <Label>Refeições</Label>
       <Button title="Nova refeição" icon="plus" />
